@@ -1,7 +1,25 @@
+import java.util.Scanner;
+
 public class Question {
     public static void main(String[] args) {
-        toInt("-a");
-        System.out.println(containsInt("This Is A Test4me"));
+        Scanner reader = new Scanner(System.in);
+        String input ="";
+        int userChoice = 1;
+        while (userChoice!=0) {
+            System.out.println("\nPlease select the method to test(0 to exit) \n1)Convert to Int \n2)Check if contains Int\n");
+            userChoice = reader.nextInt();
+            if (userChoice>2 || userChoice<0) {
+                System.out.println("Invalid choice!");
+            } else if(userChoice==1){
+                System.out.println("Provide Input string");
+                input = reader.next();
+                toInt(input);
+            } else if(userChoice==2) {
+                System.out.println("Provide Input string");
+                input = reader.next();
+                System.out.println("Answer:-"+ containsInt(input));
+            }
+        }
     }
 
     public static void toInt(String input) {
@@ -31,7 +49,7 @@ public class Question {
             }
             if(negativeNumber && length>1) {
                 answer = answer*-1;
-            } else {
+            } else if(negativeNumber && length==1) {
                 System.out.println("Invalid input");
                 return;
             }
